@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Capital Advisory — Growth Partnership for Service Businesses</title>
+<meta name="description" content="Thomas Capital Advisory partners with service businesses — lawn care, window cleaning, auto detailing, and more — providing marketing, bookkeeping, financial, and tax strategy in exchange for a flat rate or profit share. Schedule a call today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#070d16;
+    --navy-900:#0b1524;
+    --navy-800:#10203a;
+    --navy-700:#16294a;
+    --gold-500:#c9a961;
+    --gold-400:#dcc389;
+    --gold-600:#a9863f;
+    --ivory:#f6f2e9;
+    --ivory-dim:#cdd3dd;
+    --muted:#8894a6;
+    --light-bg:#fbf9f5;
+    --light-card:#ffffff;
+    --line:#22314c;
+    --line-light:#e7e1d3;
+    --ink:#151b26;
+    --ink-soft:#4a5262;
+    --shadow-lg:0 30px 60px -20px rgba(6,12,24,0.35);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--light-bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:-0.01em;color:inherit;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12.5px;letter-spacing:0.22em;text-transform:uppercase;
+    font-weight:600;color:var(--gold-500);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold-500);}
+  section{position:relative;}
+  .section-pad{padding:110px 0;}
+  @media (max-width:768px){.section-pad{padding:72px 0;} .wrap{padding:0 22px;}}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 32px;border-radius:2px;font-weight:600;font-size:14.5px;
+    letter-spacing:0.04em;cursor:pointer;border:1px solid transparent;
+    transition:all .25s ease;white-space:nowrap;
+  }
+  .btn-gold{background:linear-gradient(135deg,var(--gold-400),var(--gold-600));color:var(--navy-950);}
+  .btn-gold:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(201,169,97,0.55);}
+  .btn-outline{border-color:rgba(255,255,255,0.35);color:var(--ivory);background:transparent;}
+  .btn-outline:hover{border-color:var(--gold-500);color:var(--gold-400);}
+  .btn-outline-dark{border-color:rgba(21,27,38,0.25);color:var(--ink);background:transparent;}
+  .btn-outline-dark:hover{border-color:var(--gold-600);color:var(--gold-600);}
+  .btn-block{width:100%;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;transition:background .3s ease, padding .3s ease, box-shadow .3s ease;
+  }
+  header.scrolled{background:rgba(7,13,22,0.92);backdrop-filter:blur(10px);padding:14px 0;box-shadow:0 8px 30px -12px rgba(0,0,0,0.4);}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ivory);letter-spacing:0.01em;}
+  .logo span{color:var(--gold-500);font-weight:400;padding:0 8px;}
+  nav.links{display:flex;align-items:center;gap:36px;}
+  nav.links a{font-size:13.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ivory-dim);font-weight:500;transition:color .2s ease;}
+  nav.links a:hover{color:var(--gold-400);}
+  .nav-cta{display:flex;align-items:center;gap:22px;}
+  .nav-phone{display:flex;align-items:center;gap:8px;color:var(--ivory);font-size:14px;font-weight:600;}
+  .nav-phone svg{width:15px;height:15px;stroke:var(--gold-500);}
+  .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+  .menu-toggle span{width:24px;height:2px;background:var(--ivory);}
+  @media (max-width:980px){
+    nav.links{display:none;}
+    .nav-phone span{display:none;}
+    .menu-toggle{display:flex;}
+  }
+
+  /* ---------- mobile drawer ---------- */
+  .drawer{
+    position:fixed;inset:0;background:var(--navy-950);z-index:99;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+    transform:translateY(-100%);transition:transform .35s ease;
+  }
+  .drawer.open{transform:translateY(0);}
+  .drawer a{font-family:'Playfair Display',serif;font-size:26px;color:var(--ivory);}
+  .drawer .btn{margin-top:10px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(ellipse 60% 55% at 82% 18%, rgba(201,169,97,0.16), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 12% 90%, rgba(201,169,97,0.08), transparent 60%),
+      linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+    color:var(--ivory);position:relative;padding:150px 0 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;opacity:0.5;
+    background-image:linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 70% 70% at 60% 30%, black, transparent 75%);
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-inner{max-width:760px;}
+  .hero h1{font-size:clamp(38px,5.6vw,64px);line-height:1.08;margin-bottom:26px;}
+  .hero h1 em{font-style:normal;color:var(--gold-400);}
+  .hero p.lead{font-size:18px;color:var(--ivory-dim);max-width:600px;margin-bottom:42px;font-weight:300;}
+  .hero-ctas{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:56px;}
+  .trust-line{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:13.5px;letter-spacing:0.03em;}
+  .trust-line .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-500);}
+  .hero-divider{width:70px;height:1px;background:linear-gradient(90deg,var(--gold-500),transparent);margin:0 0 26px;}
+
+  /* ---------- stats bar ---------- */
+  .stats{
+    background:var(--navy-950);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:56px 0;
+  }
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+  @media (max-width:768px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:36px 20px;}}
+  .stat-num{font-family:'Playfair Display',serif;font-size:38px;color:var(--gold-400);font-weight:700;margin-bottom:6px;}
+  .stat-label{font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+
+  /* ---------- about / approach (light) ---------- */
+  .approach{background:var(--light-bg);}
+  .approach-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
+  @media (max-width:900px){.approach-grid{grid-template-columns:1fr;gap:40px;}}
+  .approach h2{font-size:clamp(30px,4vw,42px);line-height:1.15;margin-bottom:22px;}
+  .approach .lead-text{color:var(--ink-soft);font-size:16.5px;margin-bottom:20px;}
+  .approach-points{display:flex;flex-direction:column;gap:26px;margin-top:8px;}
+  .approach-point{display:flex;gap:18px;}
+  .approach-point .num{
+    font-family:'Playfair Display',serif;font-size:20px;color:var(--gold-600);
+    border:1px solid var(--line-light);border-radius:50%;width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .approach-point h4{font-size:17px;margin-bottom:6px;color:var(--ink);}
+  .approach-point p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- services (dark) ---------- */
+  .services{background:linear-gradient(180deg,var(--navy-900),var(--navy-950));color:var(--ivory);}
+  .services-head{max-width:640px;margin-bottom:60px;}
+  .services-head h2{font-size:clamp(30px,4vw,42px);}
+  .services-head p{color:var(--ivory-dim);margin-top:16px;font-size:16px;font-weight:300;}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:980px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{background:var(--navy-900);padding:38px 30px;transition:background .25s ease;}
+  .service-card:hover{background:var(--navy-800);}
+  .service-card .icon{width:40px;height:40px;margin-bottom:22px;stroke:var(--gold-500);fill:none;stroke-width:1.4;}
+  .service-card h3{font-size:19px;margin-bottom:12px;color:var(--ivory);}
+  .service-card p{font-size:14px;color:var(--ivory-dim);font-weight:300;}
+
+  .industries{margin-top:60px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .industries span.label{font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-right:6px;}
+  .pill{border:1px solid var(--line);padding:9px 18px;border-radius:30px;font-size:13.5px;color:var(--ivory-dim);}
+
+  /* ---------- process (light) ---------- */
+  .process{background:var(--light-bg);}
+  .process-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+  .process-head h2{font-size:clamp(30px,4vw,42px);}
+  .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;position:relative;}
+  @media (max-width:900px){.process-steps{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.process-steps{grid-template-columns:1fr;}}
+  .step{text-align:left;padding:32px 26px;background:var(--light-card);border:1px solid var(--line-light);border-radius:var(--radius);}
+  .step .step-num{font-family:'Playfair Display',serif;font-size:34px;color:var(--gold-600);opacity:0.55;margin-bottom:18px;}
+  .step h4{font-size:17px;margin-bottom:10px;}
+  .step p{font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- pricing (dark) ---------- */
+  .pricing{background:var(--navy-950);color:var(--ivory);position:relative;}
+  .pricing::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 50% 50% at 50% 0%, rgba(201,169,97,0.10), transparent 65%);
+  }
+  .pricing .wrap{position:relative;z-index:2;}
+  .pricing-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+  .pricing-head h2{font-size:clamp(30px,4vw,42px);}
+  .pricing-head p{color:var(--ivory-dim);margin-top:16px;font-weight:300;}
+  .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:0 auto;}
+  @media (max-width:768px){.pricing-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:linear-gradient(160deg,var(--navy-800),var(--navy-900));
+    border:1px solid var(--line);border-radius:var(--radius);padding:44px 36px;
+    display:flex;flex-direction:column;
+  }
+  .price-card.featured{border-color:var(--gold-600);box-shadow:0 0 0 1px rgba(201,169,97,0.35), var(--shadow-lg);}
+  .price-tag{font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-400);margin-bottom:14px;font-weight:600;}
+  .price-card h3{font-size:24px;margin-bottom:14px;}
+  .price-card p.desc{color:var(--ivory-dim);font-size:14.5px;font-weight:300;margin-bottom:26px;flex-grow:1;}
+  .price-card ul{list-style:none;margin-bottom:30px;display:flex;flex-direction:column;gap:12px;}
+  .price-card li{display:flex;gap:10px;font-size:14px;color:var(--ivory-dim);align-items:flex-start;}
+  .price-card li svg{width:16px;height:16px;stroke:var(--gold-500);flex-shrink:0;margin-top:2px;}
+  .pricing-note{text-align:center;color:var(--muted);font-size:13.5px;margin-top:36px;max-width:520px;margin-left:auto;margin-right:auto;}
+
+  /* ---------- partner (light) ---------- */
+  .partner{background:var(--light-bg);}
+  .partner-box{
+    background:var(--light-card);border:1px solid var(--line-light);border-radius:var(--radius);
+    padding:64px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;
+    box-shadow:var(--shadow-lg);
+  }
+  @media (max-width:900px){.partner-box{grid-template-columns:1fr;padding:40px 28px;}}
+  .partner-box h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:18px;}
+  .partner-box p{color:var(--ink-soft);font-size:15.5px;margin-bottom:10px;}
+  .partner-list{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .partner-list div{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);}
+  .partner-list svg{width:18px;height:18px;stroke:var(--gold-600);flex-shrink:0;margin-top:2px;}
+  .partner-cta{background:var(--navy-950);border-radius:var(--radius);padding:36px;color:var(--ivory);text-align:center;}
+  .partner-cta h4{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:12px;}
+  .partner-cta p{font-size:13.5px;color:var(--ivory-dim);margin-bottom:22px;font-weight:300;}
+
+  /* ---------- contact (dark) ---------- */
+  .contact{background:linear-gradient(180deg,var(--navy-900),var(--navy-950));color:var(--ivory);}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:48px;}}
+  .contact-head h2{font-size:clamp(30px,4vw,42px);margin-bottom:18px;}
+  .contact-head p{color:var(--ivory-dim);font-weight:300;margin-bottom:40px;}
+  .contact-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:26px;}
+  .contact-item .ic{
+    width:44px;height:44px;border:1px solid var(--line);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .contact-item svg{width:18px;height:18px;stroke:var(--gold-500);}
+  .contact-item .label{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .contact-item a.value, .contact-item .value{font-size:17px;font-weight:600;color:var(--ivory);}
+  .contact-item a.value:hover{color:var(--gold-400);}
+  .contact-item .sub{font-size:13px;color:var(--ivory-dim);margin-top:3px;font-weight:300;}
+
+  .form-card{background:var(--navy-800);border:1px solid var(--line);border-radius:var(--radius);padding:42px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ivory-dim);}
+  .field input,.field select,.field textarea{
+    background:var(--navy-900);border:1px solid var(--line);border-radius:6px;
+    padding:13px 14px;color:var(--ivory);font-family:'Inter',sans-serif;font-size:14.5px;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold-500);}
+  .field textarea{resize:vertical;min-height:110px;}
+  .full{margin-bottom:18px;}
+  .form-note{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-950);border-top:1px solid var(--line);padding:44px 0;color:var(--muted);}
+  .foot-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
+  .foot-logo{font-family:'Playfair Display',serif;color:var(--ivory);font-size:17px;}
+  .foot-logo span{color:var(--gold-500);font-weight:400;padding:0 6px;}
+  .foot-links{display:flex;gap:26px;font-size:13.5px;}
+  .foot-links a:hover{color:var(--gold-400);}
+  .foot-bottom{font-size:12.5px;margin-top:20px;text-align:center;color:#5b6576;}
+
+  ::selection{background:var(--gold-500);color:var(--navy-950);}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="logo">THOMAS<span>|</span>CAPITAL ADVISORY</a>
+    <nav class="links">
+      <a href="#approach">About</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#partner">Partners</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+18254886557">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(825) 488-6557</span>
+      </a>
+      <a href="#contact" class="btn btn-gold">Schedule a Call</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#approach" class="drawer-link">About</a>
+  <a href="#services" class="drawer-link">Services</a>
+  <a href="#pricing" class="drawer-link">Pricing</a>
+  <a href="#partner" class="drawer-link">Partners</a>
+  <a href="#contact" class="drawer-link">Contact</a>
+  <a href="#contact" class="btn btn-gold drawer-link">Schedule a Call</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">Capital Advisory for Service-Based Businesses</div>
+      <h1>Guiding Your Business from <em>Vision</em> to Market Leadership</h1>
+      <p class="lead">I partner directly with service businesses — lawn care, window cleaning, auto detailing, and beyond — as an embedded growth partner. Marketing strategy. Bookkeeping. Financial strategy. Tax strategy. One partner, fully aligned with your success.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-gold">Get Your Quote</a>
+        <a href="#contact" class="btn btn-outline">Schedule a Call →</a>
+      </div>
+      <div class="trust-line"><span class="dot"></span> Trusted by 10+ service-industry businesses to grow smarter</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats reveal">
+  <div class="wrap">
+    <div><div class="stat-num">10+</div><div class="stat-label">Businesses Grown</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Disciplines Covered</div></div>
+    <div><div class="stat-num">2</div><div class="stat-label">Pricing Structures</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Aligned Incentives</div></div>
+  </div>
+</div>
+
+<section class="approach section-pad" id="approach">
+  <div class="wrap approach-grid">
+    <div class="reveal">
+      <div class="eyebrow">Our Approach</div>
+      <h2>We Don't Consult.<br>We Embed.</h2>
+      <p class="lead-text">When you partner with Thomas Capital Advisory, you're not hiring a consultant for a one-off report — you're adding a dedicated growth partner to your team. I work inside your business, executing the strategy, not just writing it down and walking away.</p>
+      <p class="lead-text">Think of it as bringing on a partner who's as invested in your bottom line as you are — because in most engagements, quite literally, I am.</p>
+    </div>
+    <div class="approach-points reveal">
+      <div class="approach-point">
+        <div class="num">1</div>
+        <div><h4>Hands-On, Not Hands-Off</h4><p>I operate as an extension of your team — building and running your marketing, not just advising on it.</p></div>
+      </div>
+      <div class="approach-point">
+        <div class="num">2</div>
+        <div><h4>Financials You Can Trust</h4><p>Accurate, current bookkeeping so you always know exactly where your business stands, month to month.</p></div>
+      </div>
+      <div class="approach-point">
+        <div class="num">3</div>
+        <div><h4>Strategy Built to Compound</h4><p>Financial and tax strategy designed to turn revenue growth into lasting, protected wealth.</p></div>
+      </div>
+      <div class="approach-point">
+        <div class="num">4</div>
+        <div><h4>Incentives That Align</h4><p>With flat-rate or profit-share pricing, I only win when your business wins.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services section-pad" id="services">
+  <div class="wrap">
+    <div class="services-head reveal">
+      <div class="eyebrow">What We Do</div>
+      <h2>A Full-Service Growth Partnership</h2>
+      <p>Four disciplines, one accountable partner — built specifically for owner-operated service businesses ready to scale.</p>
+    </div>
+    <div class="service-grid reveal">
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 11l18-7-7 18-3-8-8-3z"/></svg>
+        <h3>Marketing Strategy</h3>
+        <p>Customer acquisition systems, local SEO, referral engines, and brand positioning built for service businesses.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        <h3>Bookkeeping</h3>
+        <p>Clean, current books every month — so you always know exactly where your business stands.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-6 3 4 5-8"/></svg>
+        <h3>Financial Strategy</h3>
+        <p>Cash flow planning, pricing strategy, and reinvestment roadmaps that turn revenue into real wealth.</p>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5z"/></svg>
+        <h3>Tax Strategy</h3>
+        <p>Proactive planning to legally minimize what you owe and keep more of what you earn.</p>
+      </div>
+    </div>
+    <div class="industries reveal">
+      <span class="label">Industries Served</span>
+      <span class="pill">Lawn Care &amp; Landscaping</span>
+      <span class="pill">Window Cleaning</span>
+      <span class="pill">Auto Detailing</span>
+      <span class="pill">+ Other Local Service Businesses</span>
+    </div>
+  </div>
+</section>
+
+<section class="process section-pad" id="process">
+  <div class="wrap">
+    <div class="process-head reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2>From First Call to Market Leadership</h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Schedule a Call</h4>
+        <p>Tell me about your business, where it stands today, and where you want to take it.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Get Your Custom Quote</h4>
+        <p>Every partnership is tailored — flat rate or a share of profit, based on your business and goals.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>I Step In</h4>
+        <p>I join as your growth partner across marketing, bookkeeping, financial strategy, and tax.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>We Scale, Together</h4>
+        <p>Aligned incentives, consistent execution, and a partner who's in it for the long run.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing section-pad" id="pricing">
+  <div class="wrap">
+    <div class="pricing-head reveal">
+      <div class="eyebrow">Pricing</div>
+      <h2>A Partnership Structured Around Your Growth</h2>
+      <p>Two ways to work together — both built so my success is tied directly to yours.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-tag">Option One</div>
+        <h3>Flat Rate Partnership</h3>
+        <p class="desc">A fixed monthly rate for hands-on support across marketing, bookkeeping, financial strategy, and tax — predictable cost, no surprises.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Predictable monthly investment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Full access across all four disciplines</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Ideal for steady, established businesses</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline btn-block">Get Your Quote</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">Option Two</div>
+        <h3>Profit-Share Partnership</h3>
+        <p class="desc">I take a direct stake in your business's profit — essentially joining as a partner. My success is tied to yours, dollar for dollar.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>No large upfront cost</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Fully aligned, performance-driven incentives</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Ideal for businesses ready to scale aggressively</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold btn-block">Get Your Quote</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal">Every quote is custom-built around your business, its current stage, and your goals. Schedule a call and I'll recommend the right structure for you.</p>
+  </div>
+</section>
+
+<section class="partner section-pad" id="partner">
+  <div class="wrap">
+    <div class="partner-box reveal">
+      <div>
+        <div class="eyebrow">Partner With Me</div>
+        <h2>Refer a Business. Grow Together.</h2>
+        <p>Know a service business that could use a growth partner? Run a business that complements mine? I'm always open to building referral relationships.</p>
+        <div class="partner-list">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Send me leads for businesses that need a growth partner</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Connect your company with mine for an ongoing partnership</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>I regularly recommend trusted partners directly to my own clients</div>
+        </div>
+      </div>
+      <div class="partner-cta">
+        <h4>Have a Lead or Partnership Idea?</h4>
+        <p>Reach out directly and let's talk about how we can work together.</p>
+        <a href="#contact" class="btn btn-gold btn-block">Submit a Lead / Partner With Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact section-pad" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-head reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's Build Something Together</h2>
+      <p>Whether you're looking for a growth partner, want to send a lead, or explore a partnership — reach out directly. I respond personally to every inquiry.</p>
+
+      <div class="contact-item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div>
+          <div class="label">Call or Text Directly</div>
+          <a class="value" href="tel:+18254886557">(825) 488-6557</a>
+          <div class="sub">Fastest way to reach me — call or text anytime.</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+        <div>
+          <div class="label">Email for Inquiries</div>
+          <a class="value" href="mailto:carlosthomasmoreno@gmail.com">carlosthomasmoreno@gmail.com</a>
+          <div class="sub">Best for detailed questions, quotes, or partnership proposals.</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div>
+          <div class="label">Schedule a Call</div>
+          <div class="value">Pick a time that works for you</div>
+          <div class="sub">Call or text (825) 488-6557, or send a message and I'll follow up to book a time.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form class="form-card" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div class="field full">
+          <label for="reason">I'm Reaching Out About</label>
+          <select id="reason" name="reason">
+            <option>Getting a Quote for My Business</option>
+            <option>Scheduling a Call</option>
+            <option>Submitting a Lead / Referral</option>
+            <option>Partnership Opportunity</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me a bit about your business or what you'd like to discuss..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block">Send Message</button>
+        <p class="form-note">Submitting opens your email app with this message ready to send to carlosthomasmoreno@gmail.com.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-wrap">
+      <div class="foot-logo">THOMAS<span>|</span>CAPITAL ADVISORY</div>
+      <div class="foot-links">
+        <a href="tel:+18254886557">(825) 488-6557</a>
+        <a href="mailto:carlosthomasmoreno@gmail.com">carlosthomasmoreno@gmail.com</a>
+        <a href="#contact">Schedule a Call</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Thomas Capital Advisory. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile drawer
+  const menuToggle = document.getElementById('menuToggle');
+  const drawer = document.getElementById('drawer');
+  menuToggle.addEventListener('click', () => drawer.classList.toggle('open'));
+  drawer.querySelectorAll('.drawer-link').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // contact form -> mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const f = e.target;
+    const name = f.name.value.trim();
+    const business = f.business.value.trim();
+    const email = f.email.value.trim();
+    const phone = f.phone.value.trim();
+    const reason = f.reason.value;
+    const message = f.message.value.trim();
+
+    const subject = `${reason} — ${name}${business ? ' (' + business + ')' : ''}`;
+    const body =
+`Name: ${name}
+Business: ${business || '—'}
+Email: ${email}
+Phone: ${phone || '—'}
+Reason: ${reason}
+
+Message:
+${message}`;
+
+    window.location.href = `mailto:carlosthomasmoreno@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+
+</body>
+</html>
